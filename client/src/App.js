@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { useBikeApi } from './services/BikeApi/BikeApi.service';
 
 function App() {
+  const { stations, isLoading, error, getStations } = useBikeApi()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {error !== null ? (
+        <div>
+          {error?.toString()}
+        </div>
+      ) : null}
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : null}
+      <table>
+        <thead>
+          <tr>
+            <td>Navn</td>
+            <td>Tilgjengelighet</td>
+          </tr>
+        </thead>
+        <tbody>
+          {stations.map((station) => (
+            <tr key={JSON.stringify(station)}>
+              <td>{station.name}</td>
+              <td>{`${station.num_bikes_available} / ${station.num_bikes_available + station.num_docks_available}`}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={getStations}>Refresh</button>
     </div>
   );
 }
