@@ -3,6 +3,7 @@ import { FilterList } from "@material-ui/icons"
 import { useState } from "react"
 import { useBikeApi } from "../services/BikeApi/BikeApi.service"
 import { FilterProvider, useFilter } from "../store/FilterProvider"
+import { getGeoLocation } from "../utils/GeoLocation"
 
 export const Filter = () => {
     const { filter, dispatch } = useFilter()
@@ -11,34 +12,42 @@ export const Filter = () => {
     const [filterState, setFilterState] = useState({
         filterWithBikes: filter.filterWithBikes,
         filterWithDocks: filter.filterWithDocks,
-        sortByClosest: filter.sortByClosest
+        sortByClosest: filter.sortByClosest,
+        latitude: filter.latitude,
+        longitude: filter.longitude
     })
   
     const toggleDrawer = (open) => (event) => {
-      if (
-        event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')
-      ) {
-        return
-      }
-      setOpenDrawer(open)
+        if (
+            event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+            return
+        }
+        setOpenDrawer(open)
     }
   
     const toggleFilterWithBikes = () => {
-      dispatch({ type: 'toggleFilterWithBikes' })
-      setFilterState({ ...filterState, filterWithBikes: !filterState.filterWithBikes})
-      getStations({ ...filterState, filterWithBikes: !filterState.filterWithBikes})
+        dispatch({ type: 'toggleFilterWithBikes' })
+        setFilterState({ ...filterState, filterWithBikes: !filterState.filterWithBikes})
+        getStations({ ...filterState, filterWithBikes: !filterState.filterWithBikes})
     }
   
     const toggleFilterWithDocks = () => {
-      dispatch({ type: 'toggleFilterWithDocks' })
-      setFilterState({ ...filterState, filterWithDocks: !filterState.filterWithDocks})
-      getStations({ ...filterState, filterWithDocks: !filterState.filterWithDocks})
+        dispatch({ type: 'toggleFilterWithDocks' })
+        setFilterState({ ...filterState, filterWithDocks: !filterState.filterWithDocks})
+        getStations({ ...filterState, filterWithDocks: !filterState.filterWithDocks})
     }
   
-    const toggleSortByClosest = () => {
-      dispatch({ type: 'toggleSortByClosest' })
-      setFilterState({ ...filterState, sortByClosest: !filterState.sortByClosest})
-      getStations({ ...filterState, sortByClosest: !filterState.sortByClosest})
+    const toggleSortByClosest = async () => {
+        var coordinates = {
+            latitude: null,
+            longitude: null
+        }
+        await getGeoLocation().then((resp) => coordinates = resp)
+
+        dispatch({ type: 'toggleSortByClosest' })
+        setFilterState({ ...filterState, sortByClosest: !filterState.sortByClosest, latitude: coordinates.latitude, longitude: coordinates.longitude})
+        await getStations({ ...filterState, sortByClosest: !filterState.sortByClosest, latitude: coordinates.latitude, longitude: coordinates.longitude})
     }
 
     return (
