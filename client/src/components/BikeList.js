@@ -25,7 +25,7 @@ export const BikeList = () => {
                                     {station.numBikesAvailable}
                                   </Avatar>
                                 ) : (
-                                  <Avatar style={{ backgroundColor: 'blue' }}>
+                                  <Avatar style={{ backgroundColor: '#43A047' }}>
                                     {station.numBikesAvailable}
                                   </Avatar>
                                 )}

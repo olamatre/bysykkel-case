@@ -1,9 +1,18 @@
-import { Drawer, Fab, List, ListItem, ListItemIcon, ListItemText, Switch } from "@material-ui/core"
+import { Drawer, Fab, List, ListItem, ListItemIcon, ListItemText, makeStyles, Switch } from "@material-ui/core"
 import { FilterList } from "@material-ui/icons"
 import { useState } from "react"
 import { useBikeApi } from "../services/BikeApi/BikeApi.service"
 import { FilterProvider, useFilter } from "../store/FilterProvider"
 import { getGeoLocation } from "../utils/GeoLocation"
+
+const useStyles = makeStyles((theme) => ({
+    filterFab: {
+        position: 'fixed',
+        bottom: theme.spacing(4),
+        right: theme.spacing(4),
+        zIndex: theme.zIndex.snackbar
+    }
+}))
 
 export const Filter = () => {
     const { filter, dispatch } = useFilter()
@@ -16,6 +25,7 @@ export const Filter = () => {
         latitude: filter.latitude,
         longitude: filter.longitude
     })
+    const classes = useStyles()
   
     const toggleDrawer = (open) => (event) => {
         if (
@@ -52,7 +62,7 @@ export const Filter = () => {
 
     return (
         <FilterProvider>
-            <Fab aria-label="filter" position="absolute" onClick={toggleDrawer(true)}>
+            <Fab aria-label="filter" onClick={toggleDrawer(true)} className={classes.filterFab}>
                 <FilterList />
             </Fab>
             <Drawer open={openDrawer} onClose={toggleDrawer(false)}>
