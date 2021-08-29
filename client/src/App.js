@@ -1,38 +1,22 @@
-import './App.css';
-import { useBikeApi } from './services/BikeApi/BikeApi.service';
+import './App.css'
+import { useBikeApi } from './services/BikeApi/BikeApi.service'
+
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
+import { DirectionsBike } from '@material-ui/icons'
 
 function App() {
   const { stations, isLoading, error, getStations } = useBikeApi()
 
   return (
-    <div>
-      {error !== null ? (
-        <div>
-          {error?.toString()}
-        </div>
-      ) : null}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : null}
-      <table>
-        <thead>
-          <tr>
-            <td>Navn</td>
-            <td>Tilgjengelighet</td>
-          </tr>
-        </thead>
-        <tbody>
-          {stations?.map((station) => (
-            <tr key={JSON.stringify(station)}>
-              <td>{station.name}</td>
-              <td>{`${station.numBikesAvailable} / ${station.numBikesAvailable + station.numDocksAvailable}`}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <button onClick={getStations}>Refresh</button>
-    </div>
+    <AppBar position="relative">
+      <Toolbar>
+        <DirectionsBike />
+        <Typography variant="h6">
+          Oslo Bysykkel
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 }
 
-export default App;
+export default App
