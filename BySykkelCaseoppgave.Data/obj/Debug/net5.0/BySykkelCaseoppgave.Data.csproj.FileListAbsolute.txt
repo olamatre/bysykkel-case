@@ -1,0 +1,12 @@
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\bin\Debug\net5.0\BySykkelCaseoppgave.Data.deps.json
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\bin\Debug\net5.0\BySykkelCaseoppgave.Data.dll
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\bin\Debug\net5.0\ref\BySykkelCaseoppgave.Data.dll
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\bin\Debug\net5.0\BySykkelCaseoppgave.Data.pdb
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.csproj.AssemblyReference.cache
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.AssemblyInfoInputs.cache
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.AssemblyInfo.cs
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.csproj.CoreCompileInputs.cache
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.dll
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\ref\BySykkelCaseoppgave.Data.dll
+C:\Users\omatre\Documents\Git-repos-local\bysykkel-case\BySykkelCaseoppgave.Data\obj\Debug\net5.0\BySykkelCaseoppgave.Data.pdb

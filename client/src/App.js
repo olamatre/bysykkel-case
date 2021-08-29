@@ -22,10 +22,10 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {stations.map((station) => (
+          {stations?.map((station) => (
             <tr key={JSON.stringify(station)}>
               <td>{station.name}</td>
-              <td>{`${station.num_bikes_available} / ${station.num_bikes_available + station.num_docks_available}`}</td>
+              <td>{`${station.numBikesAvailable} / ${station.numBikesAvailable + station.numDocksAvailable}`}</td>
             </tr>
           ))}
         </tbody>
