@@ -1,12 +1,12 @@
+import { Fragment } from "react"
 import { BikeList } from "../components/BikeList"
 import { Filter } from "../components/Filter"
-import { FilterProvider } from "../store/FilterProvider"
 
 export const BikeListView = () => {
     return (
-        <FilterProvider>
+        <Fragment>
             <Filter />
             <BikeList />
-        </FilterProvider>
+        </Fragment>
     )
 }

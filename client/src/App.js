@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { DirectionsBike } from '@material-ui/icons'
 import { BikeListView } from './views/BikeListView'
 import { DetailsView } from './views/DetailsView'
+import { FilterProvider } from './store/FilterProvider'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -29,12 +30,14 @@ function App() {
         <Container maxWidth="sm">
           <Router>
             <Switch>
-              <Route path="/">
-                <BikeListView />
-              </Route>
-              <Route path="/:stationId">
-                <DetailsView />
-              </Route>
+              <FilterProvider>
+                <Route exact path="/">
+                  <BikeListView />
+                </Route>
+                <Route path="/:stationId">
+                  <DetailsView />
+                </Route>
+              </FilterProvider>
             </Switch>
           </Router>
         </Container>

@@ -1,5 +1,6 @@
 import { Avatar, Button, CircularProgress, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography } from "@material-ui/core"
 import { Fragment } from "react"
+import { Link } from 'react-router-dom'
 import { useBikeApi } from "../services/BikeApi/BikeApi.service"
 
 export const BikeList = () => {
@@ -32,9 +33,11 @@ export const BikeList = () => {
                               </ListItemAvatar>
                               <ListItemText primary={station.name} secondary={station.address}/>
                               <ListItemSecondaryAction>
-                                <Button variant="contained" color="primary">
-                                  Se mer
-                                </Button>
+                                <Link to={`/${station.stationId}`}>
+                                  <Button variant="contained" color="primary">
+                                    Se mer
+                                  </Button>
+                                </Link>
                               </ListItemSecondaryAction>
                             </ListItem>
                           ))}
