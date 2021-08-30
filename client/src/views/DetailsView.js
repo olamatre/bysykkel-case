@@ -1,4 +1,5 @@
-import { CircularProgress, Typography } from "@material-ui/core"
+import { Button, CircularProgress, Typography } from "@material-ui/core"
+import { Link } from "react-router-dom"
 import { Fragment, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useBikeApi } from "../services/BikeApi/BikeApi.service"
@@ -22,9 +23,16 @@ export const DetailsView = () => {
                             {JSON.stringify(error)}
                         </Typography>
                     ) : (
-                        <Typography>
-                            {JSON.stringify(stationDetails)}
-                        </Typography>
+                        <Fragment>
+                            <Typography>
+                                {JSON.stringify(stationDetails)}
+                            </Typography>
+                            <Link to="/">
+                                <Button variant="contained" color="primary">
+                                    Tilbake
+                                </Button>
+                            </Link>
+                        </Fragment>
                     )}
                 </Fragment>
             )}

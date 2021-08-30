@@ -12,12 +12,7 @@ export const useBikeApi = () => {
     const getStations = async (filter = null) => {
         setIsLoading(true)
 
-        var query = `?filterAvailableBikes=${filter.filterWithBikes}&filterAvailableDocks=${filter.filterWithDocks}&sortByClosest=${filter.sortByClosest}`
-        const queryCoordinates = `&latitude=${filter.latitude}&longitude=${filter.longitude}`
-    
-        if (filter.latitude && filter.longitude) {
-            query += queryCoordinates
-        }
+        var query = `?filterAvailableBikes=${filter.filterWithBikes}&filterAvailableDocks=${filter.filterWithDocks}`
 
         await axios.get('https://localhost:5001/stations' + query)
             .then(resp => setStations(resp.data))

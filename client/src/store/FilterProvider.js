@@ -1,20 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react'
-import { getGeoLocation } from '../utils/GeoLocation'
 
 const FilterStateContext = createContext(undefined)
 
 const filterReducer = (filter, action) => {
     switch (action.type) {
-        case 'toggleSortByClosest': {
-            var coordinates = getGeoLocation()
-
-            return {
-                ...filter,
-                sortByClosest: !filter.sortByClosest,
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude
-            }
-        }
         case 'toggleFilterWithBikes': {
             return {
                 ...filter,
@@ -37,11 +26,8 @@ const FilterProvider = ({
     children,
 }) => {
     const [filter, dispatch] = useReducer(filterReducer, {
-        sortByClosest: false,
         filterWithBikes: false,
-        filterWithDocks: false,
-        latitude: null,
-        longitude: null
+        filterWithDocks: false
     })
     const value = { filter, dispatch }
 
