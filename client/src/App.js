@@ -1,10 +1,10 @@
 import './App.css'
 import React, { Fragment } from 'react'
 import { AppBar, Container, makeStyles, Toolbar, Typography } from '@material-ui/core'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { DirectionsBike } from '@material-ui/icons'
-import { Filter } from './components/Filter'
-import { BikeList } from './components/BikeList'
-import { FilterProvider } from './store/FilterProvider'
+import { BikeListView } from './views/BikeListView'
+import { DetailsView } from './views/DetailsView'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -27,10 +27,16 @@ function App() {
       </AppBar>
       <main>
         <Container maxWidth="sm">
-          <FilterProvider>
-            <Filter />
-            <BikeList />
-          </FilterProvider>
+          <Router>
+            <Switch>
+              <Route path="/">
+                <BikeListView />
+              </Route>
+              <Route path="/:stationId">
+                <DetailsView />
+              </Route>
+            </Switch>
+          </Router>
         </Container>
       </main>
     </Fragment>
