@@ -4,4 +4,5 @@ using Microsoft.AspNetCore.Mvc;
 public interface IStationsService
 {
     Task<IActionResult> Get(StationsFilterRequest filter);
+    Task<IActionResult> GetDetails(uint id);
 }

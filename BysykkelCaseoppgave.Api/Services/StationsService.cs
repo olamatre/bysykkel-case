@@ -36,6 +36,21 @@ public class StationsService : IStationsService
         return new OkObjectResult(stations.Where(filter.Keep).ToList());
     }
 
+    public async Task<IActionResult> GetDetails(uint id)
+    {
+        var stationInfos = await repository.GetStationInfos();
+        var stationStatuses = await repository.GetStationStatuses();
+
+        var stationInfo = stationInfos.Find((x) => x.StationId == id);
+        var stationStatus = stationStatuses.Find((x) => x.StationId == id);
+
+        if (stationInfo == null || stationStatus == null)
+            return new NotFoundResult();
+
+        var station = new StationDetailsDto(stationInfo, stationStatus);
+        return new OkObjectResult(station);
+    }
+
     private double Distance(double xLat, double xLon, double? yLat, double? yLon)
     {
         var lat = (double)yLat - xLat;

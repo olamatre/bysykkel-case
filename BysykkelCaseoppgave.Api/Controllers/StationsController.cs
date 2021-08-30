@@ -24,5 +24,11 @@ namespace BysykkelCaseoppgave.Api.Controllers
         {
             return await service.Get(filter);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStationDetails(uint id)
+        {
+            return await service.GetDetails(id);
+        }
     }
 }
